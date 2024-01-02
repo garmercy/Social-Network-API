@@ -1,5 +1,13 @@
 # Social-Network-API
+## Description
+This is a back-end app with that uses APIs for a social network where users can share their thoughts, react to other user's thoughts, and create or delete friends to their liking.
 
+## Tecnology
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+  
 ## User Sotry
 ```
 AS A social media startup
