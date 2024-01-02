@@ -1,12 +1,11 @@
 const { Schema, model, Types } = require("mongoose");
 const dateFormat = require("../utils/dateFormat");
 
+// Reaction schema
 const ReactionSchema = new Schema(
   {
     reactionId: {
-      // Mongoose's ObjectId data type
       type: Schema.Types.ObjectId,
-      // Default value is set to a new ObjectId
       default: () => new Types.ObjectId(),
     },
 
@@ -22,10 +21,7 @@ const ReactionSchema = new Schema(
     },
 
     createdAt: {
-      type: Date,
-      // Set default value to the current timestamp
-      default: Date.now,
-      // Use a getter method to format the timestamp on query
+      type: Date,default: Date.now,
       get: (timestamp) => dateFormat(timestamp),
     },
   },
@@ -49,16 +45,13 @@ const ThoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      // Use a getter method to format the timestamp on query
-      get: (timestamp) => dateFormat(timestamp),
+     get: (timestamp) => dateFormat(timestamp),
     },
 
     username: {
       type: String,
       required: true,
     },
-
-    // array of nested documents created with the reactionSchema
     reactions: [ReactionSchema],
   },
   {
@@ -69,6 +62,7 @@ const ThoughtSchema = new Schema(
     id: false,
   }
 );
+
 
 ThoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
